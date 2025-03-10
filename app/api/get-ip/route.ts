@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from '@supabase/supabase-js'
 
-export async function GET(req: NextRequest) {
+export async function GET(req: NextRequest & { ip?: string }) {
   const ip = req.headers.get("x-forwarded-for") || req.ip || "Unknown IP";
 
   // Create a single supabase client for interacting with your database
